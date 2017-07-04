@@ -4,26 +4,43 @@
 `Learning Center Home <http://learning.cyverse.org/>`_
 
 
-Section Title
--------------
+Logging in to DNA Subway
+------------------------
+DNA Subway is designed to be a classroom-freindly approach to bioinformatics.
+Unlike most CyVerse platforms, you can even use Subway without registering for
+a CyVerse account. We do encourage you to register however, only work from
+registered users can be saved.
 
 .. #### Comment: short description
 
 **Some things to remember about the platoform**
 
 
-- reminder one
-- reminder two
+- DNA Subway access must be requested through the CyVerse user portal. You can
+  check if you already have access, or request access by logging into the portal
+  and visiting the `My Services <https://user.cyverse.org/services/mine>`_ page.
+  If DNA Subway is not listed, click on `Available <https://user.cyverse.org/services/available>`_
+  services to request access.
+- We suggest that every student using DNA Subway obtain their own account.
+
 
 
 ----
 
-*Descriptive title - refrence platform/tool name for searchability*
+*Log into DNA Subway*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1.
+  1. Access the DNA Subway website at `https://dnasubway.cyverse.org/<https://dnasubway.cyverse.org/>`_
 
-  2.
+  2. If you wish to use DNA Subway as a guest click 'Enter As Guest'
+
+    .. Note::
+       When using DNA Subway as a guest, you will be able to work only on the
+       Red, Yellow, and Blue lines. Additionally, some Red Line functionalities
+       will be disabled. Finally, after logging out, or a period of inactivity
+       (>~ 30 min) you work will be discarded.
+
+  3. Enter your CyVerse username and CyVerse password.
 
 ..
 	#### Comment: Suggested style guide:
@@ -40,7 +57,7 @@ Section Title
 
 **Fix or improve this documentation:**
 
-- On Github: `Repo link <FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_>`_
+- On Github: `Repo link <https://github.com/CyVerse-learning-materials/dnasubway_guide>`_
 - Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
 
 ----
