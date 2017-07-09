@@ -29,18 +29,12 @@ examine RNA-Seq datasets for differential transcript abundance (Green Line).
 	:maxdepth: 2
 
 	Tutorial home <self>
-	Logging in to DNA Subway <step1.rst>
+	DNA Subway Basics and Logging in to Subway <step1.rst>
 	Accessing Saved Private and Public DNA Subway Projects <step2.rst>
 	Walkthrough of DNA Subway Red Line - Genome Annotation <step3.rst>
 	Walkthrough of DNA Subway Yellow Line - Sequence Detection <step4.rst>
 	Walkthrough of DNA Subway Blue Line - DNA Barcoding and Phylogenetics <step5.rst>
 	Walkthrough of DNA Subway Green Line - RNA-Seq <step6.rst>
-
-..
-	#### Comment:This tutorial can have multiple pages. The table of contents assumes
-	you have an additional page called 'First Step' with content located in 'step1.rst'.
-	Copy step1.rst. step2.rst has slightly different formatting to end the document.
-	Edit these titles and filenames as needed ####
 
 
 Prerequisites
