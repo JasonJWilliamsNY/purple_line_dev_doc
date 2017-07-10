@@ -244,6 +244,7 @@ the following *discussion questions* (the locations of the genes are given
 in parentheses and can be pasted into the browser):
 
   *Considering the following genes:*
+
   - BFN1-201 (1:3748591..3753070)
   - SCAMP5-201 (1:3744556..3749035)
   - STP1-201 (1:3776366..3780845)
@@ -412,7 +413,8 @@ in parentheses and can be pasted into the browser):
      down to the comments section to enter comments). How do your annotations
      compare with the Ensembl annotations?
 
-     Genes to try:
+     *Genes to try:*
+
      - AT1G11270.2 (1:3781511..3790520)
      - STP1-201 (1:3776261..3785270)
      - T28P6.11-201 (1:3762877..3764678)

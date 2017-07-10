@@ -9,9 +9,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from misc.cyverse_sphinx_conf import *  # noqa
 
-project = 'YOUR PROJECT NAME HERE as topic_tutorial'
+project = 'DNA Subway Guide'
 copyright = '2016, CyVerse'
-author = 'your_name'
+author = 'CyVerse'
 version = '1.0'
 release = '1.0'
 
