@@ -17,7 +17,8 @@ of Related Genes and Transposons) uses either a DNA or amino acid ‘seed’ que
 to: (i) automatically identify and retrieve gene family homologs from a
 genomic database, (ii) characterize gene structure and (iii) perform phylogenetic
 analysis. Due to its high speed, TARGeT is also able to characterize very large
-gene families, including transposable elements (TEs)`[citation] <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2699529/>`_
+gene families, including transposable elements (TEs). `[citation] <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2699529/>`_
+
 **Some things to remember about the platform**
 
 - Yellow Line will return sequences that would normally be excluded from a
@@ -86,7 +87,7 @@ are a major class of DNA elements that impact the function of the genome.
            - **Non-autonomous transposons:** Transposons which lack an active
            transposase gene, thus requiring help from another transposon to move.
            - **Autonomous transposons:** Transposons which have a functional
-           tranposase and can move within the genome.  
+           tranposase and can move within the genome.
 
 
 **Example Exercise - Search Plant Genomes: mPing Mite element**
