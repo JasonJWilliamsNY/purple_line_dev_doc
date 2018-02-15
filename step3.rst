@@ -219,7 +219,7 @@ gene predictions generated so far.
 .. tip::
     **Some Useful Definitions**
 
-    **Geneome Browser:** A GUI (Graphical User Interface) for viewing biological
+    **Genome Browser:** A GUI (Graphical User Interface) for viewing biological
     information.  GBrowse (DNA Subway’s Browser) is “designed to view genomes.
     It displays a graphical representation of a section of a genome, and shows
     the positions of genes and other functional elements. It can be configured
