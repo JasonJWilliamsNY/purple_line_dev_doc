@@ -51,7 +51,9 @@ summarized in the metadata.
 
 ----
 
- .. admonition:: A Note on Sample Data
+     .. note::
+
+       **Sample Data**
 
    In this guide, we will use two sample datasets
 
@@ -159,7 +161,9 @@ Sheets to edit and export your metadata files.
   2. For 'Select Project Type' select either Single End Reads or Paired End
      Reads
 
-     .. admonition:: Sample Data
+     .. note::
+
+       **Sample Data**
 
         For sample data in this guide select **Paired End Reads**
 
@@ -173,11 +177,13 @@ Sheets to edit and export your metadata files.
          - `Illimina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
-     .. admonition:: Sample Data
+     .. note::
+
+       **Sample Data**
 
         For sample data in this guide select **Illimina Casava 1.8**
 
-  4. Enter a project title, and description; click 'Continue'
+  4. Enter a project title, and description; click :guilabel:`&Continue`.
 
 **B. Upload Read Data to CyVerse Data Store**
 
@@ -206,15 +212,17 @@ directly to the CyVerse Data Store.
      CyVerse, it will ask you to do so); click the **add data** link.
   2. Select your metadata file: click on the folder that matches your CyVerse
      username and Navigate to the folder where your sequencing files are located.
+     click :guilabel:`&Add selected files` to add your metadata file.
 
-     .. admonition:: Sample Data
+     .. note::
+
+       **Sample Data**
 
         For sample metadata file in this guide select navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
         purple_line > eDNAworked
 
-        Select the **mappingfile.tsv** and then click "Add selected
-        files"
+        Select the **mappingfile.tsv** and then click :guilabel:`&Add selected files`.
 
   3. To validate the metadata file, click "validate sample mapping file", header
      columns will be displayed. Next click :guilabel:`&Validate`.
@@ -223,14 +231,17 @@ directly to the CyVerse Data Store.
      matches your CyVerse username and Navigate to the folder where your
      sequencing files are located.
 
-     .. admonition:: Sample Data
+     .. note::
+
+       **Sample Data**
 
         For sample sequence date in this guide select navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
         purple_line > montana_controls
 
         Select all 11 fastq files (they are compressed and will have the fastq.gz
-        file extension). Then click "Add selected files".
+        file extension). Then click :guilabel:`&Add selected files` or :guilabel:`&Add all files in this directory `
+        (only files with a .fastq.gz extension will be added).
 
   5. Click the "add data" link to add the sequencing data to your project.
 
@@ -246,7 +257,8 @@ At this step, reads will be grouped according to the sample metadata provided,
 this includes separating reads acording to their sequencing barcodes if this
 was not done prior to running the Purple Line.
 
-  1. Click **demux reads** to demultiplex your sample reads.
+  1. Click the 'Demultiplex reads' stop, then click :guilabel:`&demux reads` to
+     demultiplex your sample reads.
 
   2. When demultiplexing is complete, you will generate a file (.qzv) click
      this link to view a visualization and statistics on the sequence and
@@ -257,14 +269,11 @@ was not done prior to running the Purple Line.
 It is important to only work with high quality data. This step will generate a
 sequence quality histogram which can be used to determine parameter for trimming.
 
-  1. Click the 'Demultiplex reads' stop, then click the 'demux reads' button.
+  1. Click the 'Demultiplex reads' stop, then click the results label ending in
+  **.qzv** will appear. Click this link to view your results.
 
-  2. When the demultiplexing step is complete, Job status will be "done" and a
-     link to a result ending in **.qzv** will appear. Click this link to view
-     your results.
-
-  3. Click the "Interactive Quality Plot" tab to view a histogram of sequence
-     quality. Use this plot to determine a location to trim.
+  2. Click the "Interactive Quality Plot" tab to view a histogram of sequence
+     quality. Use this plot at the tip below to determine a location to trim.
 
     .. tip::
 
@@ -316,13 +325,15 @@ sequence quality histogram which can be used to determine parameter for trimming
       `https://view.qiime2.org <https://view.qiime2.org>`_
 
 
-  4. Click on the 'Trim reads' step. Click the 'run' button and then select
+  3. Click on the 'Trim reads' stop. Click :guilabel:`&run` and then select
      values for "trimLeft" (the position starting from the left you wish to
      ) and "TruncLen" (This is the position where reads should be trimmed,
      truncating the 3' end of the read. Reads shorter than this length will
      be discarded).
 
-     .. admonition:: Sample Data
+     .. note::
+
+       **Sample Data**
 
         Based on the histogram for our sample, we recommend the following
         parameters:
@@ -409,14 +420,69 @@ question - "what are the differences in species between samples?".
          specifically looking for marine fishes you may elect to choose the
          **Mitofish JO** classifier.
 
-    .. admonition:: Sample DNA
+     .. note::
+
+       **Sample Data**
 
       We recomend the following parameters for the **eDNAworked** dataset:
 
        - **Sampling Depth**: 1000
        - **Classifier**: Custom 12s rRNA, take 3
 
+  2. When complete, you should generate several visualization results including:
+
+     - **.taxa-bar-plots.qzv**: An interactive stacked bar plot of species
+       diversity.
+     - **.taxononmy.gzv**: A table indicating the identified "features",  their
+       taxa, and an indication of confidence.
+     - **Other expected results**: [MORE INFO]
+
+     You can download and interact with any of the available plots.
+
+     .. tip::
+
+       Selecting different taxonomic levels allows you to visualize diversity
+       for each sample at diffrent levels (e.g. Kindom, Phylym, Class, etc.)
+
+       |core_matrix|
+
 **B. Calculate Alpha diversity**
+
+  1. Click on the  'Alpha diversity' stop. Then click the "Build alpha diversity" link. No
+     visualization will be created.
+
+**C. Calculate Beta diversity**
+
+  1. Click on the  'Beta diversity' stop. Then click the "Build beta diversity" link. No
+     visualization will be created.
+
+**D. Calculate Taxonomic diversity**
+
+  1. Click on the  'Taxonomic diversity' stop. you should generate several visualization
+     results including:
+
+     - **.taxa-bar-plots.qzv**: An interactive stacked bar plot of species
+       diversity.
+     - **.taxononmy.gzv**: A table indicating the identified "features",  their
+       taxa, and an indication of confidence.
+     - **Other expected results**: [MORE INFO]
+
+**E. Calculate differential abundance **
+
+  1. Click on the 'Differential abundance' stop. Then click on the "Submit
+     new "Differential abundance" job" link. Choose a metadata catagory to group
+     by, and a level of taxonomy to summarize by. Then click :guilabel:`$submit job`. 
+
+     .. note::
+
+       **Sample Data**
+
+      We recomend the following parameters for the **eDNAworked** dataset:
+
+       - **Group data by**: Treatment
+       - **Level of taxonomy to summarize**: 3
+
+
 
 ----
 
@@ -458,3 +524,6 @@ Post your question to the user forum:
 .. |histogram_good| image:: ./img/dna_subway/histogram_good.png
    :width: 400
    :height: 250
+.. |core_matrix| image:: ./img/dna_subway/core_matrix.png
+   :width: 400
+   :height: 500
