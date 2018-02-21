@@ -217,7 +217,7 @@ directly to the CyVerse Data Store.
         files"
 
   3. To validate the metadata file, click "validate sample mapping file", header
-     columns will be displayed. Next click the "Validate" button.
+     columns will be displayed. Next click :guilabel:`&Validate`.
 
   4. To add sequence data, click the "add data" link. Click on the folder that
      matches your CyVerse username and Navigate to the folder where your
