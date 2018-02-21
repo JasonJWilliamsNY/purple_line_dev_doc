@@ -471,7 +471,7 @@ question - "what are the differences in species between samples?".
 
   1. Click on the 'Differential abundance' stop. Then click on the "Submit
      new "Differential abundance" job" link. Choose a metadata catagory to group
-     by, and a level of taxonomy to summarize by. Then click :guilabel:`$submit job`. 
+     by, and a level of taxonomy to summarize by. Then click :guilabel:`&submit job`. 
 
      .. note::
 
