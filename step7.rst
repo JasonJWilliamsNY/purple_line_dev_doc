@@ -240,7 +240,7 @@ directly to the CyVerse Data Store.
         purple_line > montana_controls
 
         Select all 11 fastq files (they are compressed and will have the fastq.gz
-        file extension). Then click :guilabel:`&Add selected files` or :guilabel:`&Add all files in this directory `
+        file extension). Then click :guilabel:`&Add selected files` or :guilabel:`&Add all files in this directory`
         (only files with a .fastq.gz extension will be added).
 
   5. Click the "add data" link to add the sequencing data to your project.
