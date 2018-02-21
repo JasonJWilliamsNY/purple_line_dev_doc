@@ -55,13 +55,13 @@ summarized in the metadata.
 
        **Sample Data**
 
-   In this guide, we will use two sample datasets
+      In this guide, we will use two sample datasets
 
-     - **Microbiome**: collected from Montana [MORE INFO]
-     - **eDNA**: collected from [MORE INFO]
+       - **Microbiome**: collected from Montana [MORE INFO]
+       - **eDNA**: collected from [MORE INFO]
 
-     Where appropriate, a note in the instructions will indicate which options
-     to select so that you can work with this test data.
+       Where appropriate, a note in the instructions will indicate which options
+       to select so that you can work with this test data.
 
 
 *DNA Subway Purple Line - Metadata file and Sequencing Prerequisites*
@@ -181,7 +181,7 @@ Sheets to edit and export your metadata files.
 
        **Sample Data**
 
-        For sample data in this guide select **Illimina Casava 1.8**
+        For sample data in this guide select **Illumina Casava 1.8**
 
   4. Enter a project title, and description; click :guilabel:`&Continue`.
 
@@ -270,7 +270,7 @@ It is important to only work with high quality data. This step will generate a
 sequence quality histogram which can be used to determine parameter for trimming.
 
   1. Click the 'Demultiplex reads' stop, then click the results label ending in
-  **.qzv** will appear. Click this link to view your results.
+     **.qzv** will appear. Click this link to view your results.
 
   2. Click the "Interactive Quality Plot" tab to view a histogram of sequence
      quality. Use this plot at the tip below to determine a location to trim.
@@ -471,7 +471,7 @@ question - "what are the differences in species between samples?".
 
   1. Click on the 'Differential abundance' stop. Then click on the "Submit
      new "Differential abundance" job" link. Choose a metadata catagory to group
-     by, and a level of taxonomy to summarize by. Then click :guilabel:`&submit job`. 
+     by, and a level of taxonomy to summarize by. Then click :guilabel:`&submit job`.
 
      .. note::
 
@@ -482,7 +482,8 @@ question - "what are the differences in species between samples?".
        - **Group data by**: Treatment
        - **Level of taxonomy to summarize**: 3
 
-
+*DNA Subway Purple Line - Visualize data with PiCrust and PhyloSeq*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ----
 
