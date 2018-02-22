@@ -8,9 +8,9 @@ Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
 The Purple Line provides the capability for analysis of microbiome and eDNA (
 environmental DNA) by implementing a similified version of the
-`QIIME 2 <https://qiime2.org/>`_ (pronounced "chime") workflow. Using the Purple
-Line, you can analyze uploaded high throughput sequencing reads to get details
-on species in microbial or environmental DNA samples.
+`QIIME 2 <https://qiime2.org/>`_ (pronounced "chime two") workflow. Using the
+Purple Line, you can analyze uploaded high throughput sequencing reads to get
+details on species in microbial or environmental DNA samples.
 
 Metabarcoding uses next generation sequencing to analyze hundreds of thousands
 of DNA barcodes from complex mixtures of DNA. In a typical experiment, DNA is
@@ -141,8 +141,8 @@ Sheets to edit and export your metadata files.
 
   1. Using a spreasheet editor, create a metadata sheet that provides
      descriptions of the sequencing files used in your experiment. Export this
-     file as a **.txt** or **.tsv** file. following the `QIIME 2 metadata documentation`_
-     recomendations.
+     file as a tab-delimited **.txt** or **.tsv** file. following
+     the `QIIME 2 metadata documentation`_ recomendations.
 
      .. tip::
 
@@ -253,9 +253,11 @@ directly to the CyVerse Data Store.
 
 **B. Demultiplex reads**
 
-At this step, reads will be grouped according to the sample metadata provided,
-this includes separating reads acording to their sequencing barcodes if this
-was not done prior to running the Purple Line.
+At this step, reads will be grouped according to the sample metadata.
+This includes separating reads acording to their index sequences if this
+was not done prior to running the Purple Line. For demultiplexing based on index
+sequences, the index sequences must be defined in the metadata file.
+
 
   1. Click the 'Demultiplex reads' stop, then click :guilabel:`&demux reads` to
      demultiplex your sample reads.
@@ -299,7 +301,16 @@ sequence quality histogram which can be used to determine parameter for trimming
 
       **Example plots**
 
-      *Quality drops significantly at base 35* - In this case because [MORE INFO]
+      It is important to maximize the length of the reads while minimizing the
+      use of low quality base calls. To this end, a good guideline is to trim
+      the right end of reads to a length where the 25th percentile is at a
+      quality score of 25 or more. However, the length of trimming will depend
+      on the quality of the sequence, so you may have to use a lower quality
+      threshold to retain enough sequence for informative sequence searches and
+      alignments. This may require multiple runs of the analysis to find the
+      optimal trim length for your data.
+
+      *Quality drops significantly at base 35*
 
       |histogram_poor|
 
@@ -312,17 +323,17 @@ sequence quality histogram which can be used to determine parameter for trimming
 
       **QIIME2 Visualizations**
 
-    One of the features of QIIME 2 are the variety of visualizations provided
-    at several analysis steps. Although this guide will not cover every
-    feature of every visualization, here are some important points to note.
+      One of the features of QIIME 2 are the variety of visualizations provided
+      at several analysis steps. Although this guide will not cover every
+      feature of every visualization, here are some important points to note.
 
-    - **QIIME2 View**: DNA Subway uses the QIIME 2 View plugin to display
-      visualizations. Like the standalone QIIME 2 software, you can navigate
-      menus, and interact with several visualizations. Importantly, many files
-      and visualizations can be directly download for your use outside of
-      DNA Subway, including in report generation, or in your custom QIIME 2
-      analyses. You can view downloaded .qza or .qzv files at
-      `https://view.qiime2.org <https://view.qiime2.org>`_
+      - **QIIME2 View**: DNA Subway uses the QIIME 2 View plugin to display
+        visualizations. Like the standalone QIIME 2 software, you can navigate
+        menus, and interact with several visualizations. Importantly, many files
+        and visualizations can be directly download for your use outside of
+        DNA Subway, including in report generation, or in your custom QIIME 2
+        analyses. You can view downloaded .qza or .qzv files at
+        `https://view.qiime2.org <https://view.qiime2.org>`_
 
 
   3. Click on the 'Trim reads' stop. Click :guilabel:`&run` and then select
@@ -342,6 +353,38 @@ sequence quality histogram which can be used to determine parameter for trimming
           experiment)
         - **TruncLen: 120** (this is where low quality sequence begins, in this case
           because our sequence length is lower than the expected read length)
+
+**D. Check Results of Trimming**
+Once trimming is complete,  a file including the name table-trim and .qzv is
+created. This file summarizes the results of trimming and includes an
+interactive tool that is useful for determining how to run later analyses.
+
+  1. Click on the link to the file named ###table-trim###.qzv. The Overview tab
+     shows the number of samples and features (sequences) in the data and
+     summarizise the frequency of these features in the samples.
+
+Within the visualization, click on the Feature Detail for a summary of the
+frequency of each feature and the number of samples that include the feature.
+The features are identified with a code that allows you to search for the
+features in the feature table (see below). This can be helpful if you want to
+explore sequences that are frequent or found in many of your samples.
+
+     .. tip::
+
+       **Choosing sampling depth**
+
+       In downstream steps, you will need to choose a sampling depth for your
+       sample comparisons. Click on the Interactive Sample Detail tab to explore
+       the number of sequences per sample after trimming. Click and drag the
+       slide bar  below "Sample Depth" to explore how many sequences can be
+       sampled during the Core Analysis (see below). As you slide the bar to the
+       right, more sequences are added, but samples that do not have this many
+       sequences will be removed during analysis. The sampling depth affects the
+       number of sequences that will be analyzed for taxonomy in later steps:
+       as the sampling depth increases, a greater representation of the
+       sequences will be analyzed. However, high sampling depth could exclude
+       important samples, so a balance between depth and retaining samples in
+       the analysis must be found.
 
 ----
 
@@ -367,8 +410,8 @@ each sample.
        sequences actually found in the samples and eliminating erroneous
        sequences.
 
-       - **Feature ID**: A unique identifier [OTU? MORE INFO]
-       - **Sequence**: A DNA Sequence associated with that identifier [MORE INFO]
+       - **Feature ID**: A unique identifier for sequences.
+       - **Sequence**: A DNA Sequence associated with each identifier.
 
        Clicking on any given sequence will initiate at BLAST search on the NCBI
        website. Click "View report" on the BLAST search that opens in a new
@@ -394,8 +437,8 @@ question - "what are the differences in species between samples?".
 **A. Calculate core matrix**
 
   1. Click on 'Core matrix' and then click the "run" link. Choose a sampling
-     depth and classifier - see comments in the tip below. Finally, click '
-     Submit job'.
+     depth based upon the interactive tool described in Step D, above and
+     classifier - see comments in the tip below. Finally, click 'Submit job'.
 
        .. tip::
 
@@ -467,7 +510,7 @@ question - "what are the differences in species between samples?".
        taxa, and an indication of confidence.
      - **Other expected results**: [MORE INFO]
 
-**E. Calculate differential abundance **
+**E. Calculate differential abundance**
 
   1. Click on the 'Differential abundance' stop. Then click on the "Submit
      new "Differential abundance" job" link. Choose a metadata catagory to group
@@ -481,6 +524,8 @@ question - "what are the differences in species between samples?".
 
        - **Group data by**: Treatment
        - **Level of taxonomy to summarize**: 3
+
+----
 
 *DNA Subway Purple Line - Visualize data with PiCrust and PhyloSeq*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
