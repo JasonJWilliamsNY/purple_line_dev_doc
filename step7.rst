@@ -55,10 +55,8 @@ summarized in the metadata.
 
        **Sample Data**
 
-      In this guide, we will use two sample datasets
-
-       - **Microbiome**: collected from Montana [MORE INFO]
-       - **eDNA**: collected from [MORE INFO]
+      In this guide, we will use a microbiome dataset collected from
+      `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ [MORE INFO]
 
        Where appropriate, a note in the instructions will indicate which options
        to select so that you can work with this test data.
@@ -165,7 +163,7 @@ Sheets to edit and export your metadata files.
 
        **Sample Data**
 
-        For sample data in this guide select **Paired End Reads**
+        For sample data in this guide select **Single End Reads**
 
 
   3. For 'Select File  Format' select the format the corresponds to your sequence metadata.
@@ -220,9 +218,10 @@ directly to the CyVerse Data Store.
 
         For sample metadata file in this guide select navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
-        purple_line > eDNAworked
+        purple_line > montana_controls
 
-        Select the **mappingfile.tsv** and then click :guilabel:`&Add selected files`.
+        Select the **mappingfile_MT_corrected.tsv** and then click
+        :guilabel:`&Add selected files`.
 
   3. To validate the metadata file, click "validate sample mapping file", header
      columns will be displayed. Next click :guilabel:`&Validate`.
@@ -239,11 +238,14 @@ directly to the CyVerse Data Store.
         Shared Data > cyverse_training > platform_guides > dna_subway >
         purple_line > montana_controls
 
-        Select all 11 fastq files (they are compressed and will have the fastq.gz
-        file extension). Then click :guilabel:`&Add selected files` or :guilabel:`&Add all files in this directory`
-        (only files with a .fastq.gz extension will be added).
+        Select all 11 fastq files (they are compressed and will have the
+        fastq.gz file extension). Then click :guilabel:`&Add selected files` or
+        :guilabel:`&Add all files in this directory` (only files with a
+        .fastq.gz extension will be added).
 
-  5. Click the "add data" link to add the sequencing data to your project.
+  5. Click the "add data" link to add the sequencing data to your project. Close
+     the "Manage data" window, or repeat this step as appropriate until all your
+     sequence data files have been added.
 
 
   .. warning::
@@ -258,6 +260,12 @@ This includes separating reads acording to their index sequences if this
 was not done prior to running the Purple Line. For demultiplexing based on index
 sequences, the index sequences must be defined in the metadata file.
 
+  ..note :
+
+    Even if your files were previously demultimplexed (as will generally be
+    the case with illumina data) you must still complete this step to have your
+    files appropriately associated with metadata.
+
 
   1. Click the 'Demultiplex reads' stop, then click :guilabel:`&demux reads` to
      demultiplex your sample reads.
@@ -265,6 +273,7 @@ sequences, the index sequences must be defined in the metadata file.
   2. When demultiplexing is complete, you will generate a file (.qzv) click
      this link to view a visualization and statistics on the sequence and
      metadata for this project.
+
 
 **C. Check sequencing quality and Trim Reads**
 
@@ -274,16 +283,60 @@ sequence quality histogram which can be used to determine parameter for trimming
   1. Click the 'Demultiplex reads' stop, then click the results label ending in
      **.qzv** will appear. Click this link to view your results.
 
+      .. note::
+
+         **QIIME2 Visualizations**
+
+        One of the features of QIIME 2 are the variety of visualizations provided
+        at several analysis steps. Although this guide will not cover every
+        feature of every visualization, here are some important points to note.
+
+         - **QIIME2 View**: DNA Subway uses the QIIME 2 View plugin to display
+           visualizations. Like the standalone QIIME 2 software, you can navigate
+           menus, and interact with several visualizations. Importantly, many files
+           and visualizations can be directly download for your use outside of
+           DNA Subway, including in report generation, or in your custom QIIME 2
+           analyses. You can view downloaded .qza or .qzv files at
+           `https://view.qiime2.org <https://view.qiime2.org>`_
+
+
+     .. tip::
+
+       **Quality Graphs Explained**
+
+       After demultiplexing, you will be presented with a visualization that
+       displays the following tables and graphs:
+
+        **Overview Tab**
+
+       - *Demultiplexed sequence counts summary*: For each of the fastq files
+         (each of which may generally correspond to a single sample), you are
+         presented with comparative statistics on the number of sequences
+         present. This is followed by a histogram that plots number of sequences
+         by the number of samples.
+
+       - *Per-sample sequence counts*: These are the actual counts of sequences
+         per sample as indicated by the sample names you provided in your
+         metadata sheet.
+
+        **Interactive Quality Plot**
+
+        This is an interactive plot that gives you an average quality
+        `Phred score <https://en.wikipedia.org/wiki/Phred_quality_score>`_
+        (y-axis) by the position along the read (x-axis). This box plot is
+        derrived from an random sampling of a subset of sequences. The number of
+        sequences sampled will be inidicated in the plot caption.
+
   2. Click the "Interactive Quality Plot" tab to view a histogram of sequence
      quality. Use this plot at the tip below to determine a location to trim.
 
     .. tip::
 
-        **Tips on trimming for sequence quality**
+      **Tips on trimming for sequence quality**
 
       On the Interactive Quality Plot you are shown an histogram, plotting the
       average quality (X axis)
-      `Phred Score <https://en.wikipedia.org/wiki/Phred_quality_score>`_ vs. the
+      `Phred Score`_ vs. the
       position on the read (y axis) in base pairs for a **subsample** of reads.
 
       **Zooming to determine 3' trim location**
@@ -318,29 +371,11 @@ sequence quality histogram which can be used to determine parameter for trimming
 
       |histogram_good|
 
-
-    .. note::
-
-      **QIIME2 Visualizations**
-
-      One of the features of QIIME 2 are the variety of visualizations provided
-      at several analysis steps. Although this guide will not cover every
-      feature of every visualization, here are some important points to note.
-
-      - **QIIME2 View**: DNA Subway uses the QIIME 2 View plugin to display
-        visualizations. Like the standalone QIIME 2 software, you can navigate
-        menus, and interact with several visualizations. Importantly, many files
-        and visualizations can be directly download for your use outside of
-        DNA Subway, including in report generation, or in your custom QIIME 2
-        analyses. You can view downloaded .qza or .qzv files at
-        `https://view.qiime2.org <https://view.qiime2.org>`_
-
-
   3. Click on the 'Trim reads' stop. Click :guilabel:`&run` and then select
      values for "trimLeft" (the position starting from the left you wish to
      ) and "TruncLen" (This is the position where reads should be trimmed,
      truncating the 3' end of the read. Reads shorter than this length will
-     be discarded).
+     be discarded). Finally, click the "trim reads" link. 
 
      .. note::
 
@@ -351,11 +386,11 @@ sequence quality histogram which can be used to determine parameter for trimming
 
         - **trimLeft: 17** (this is specific to primers and adaptors in this
           experiment)
-        - **TruncLen: 120** (this is where low quality sequence begins, in this case
+        - **TruncLen: 200** (this is where low quality sequence begins, in this case
           because our sequence length is lower than the expected read length)
 
 **D. Check Results of Trimming**
-Once trimming is complete,  a file including the name table-trim and .qzv is
+Once trimming is complete, a file including the name table-trim and .qzv is
 created. This file summarizes the results of trimming and includes an
 interactive tool that is useful for determining how to run later analyses.
 
