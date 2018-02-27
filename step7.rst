@@ -375,7 +375,7 @@ sequence quality histogram which can be used to determine parameter for trimming
      values for "trimLeft" (the position starting from the left you wish to
      ) and "TruncLen" (This is the position where reads should be trimmed,
      truncating the 3' end of the read. Reads shorter than this length will
-     be discarded). Finally, click the "trim reads" link. 
+     be discarded). Finally, click the "trim reads" link.
 
      .. note::
 
@@ -390,36 +390,55 @@ sequence quality histogram which can be used to determine parameter for trimming
           because our sequence length is lower than the expected read length)
 
 **D. Check Results of Trimming**
-Once trimming is complete, a file including the name table-trim and .qzv is
-created. This file summarizes the results of trimming and includes an
-interactive tool that is useful for determining how to run later analyses.
+Once trimming is complete, the following outputs are expected:
 
-  1. Click on the link to the file named ###table-trim###.qzv. The Overview tab
-     shows the number of samples and features (sequences) in the data and
-     summarizise the frequency of these features in the samples.
+  1. Click on the generated result links to view summary statistics on your
+     sequences.
 
-Within the visualization, click on the Feature Detail for a summary of the
-frequency of each feature and the number of samples that include the feature.
-The features are identified with a code that allows you to search for the
-features in the feature table (see below). This can be helpful if you want to
-explore sequences that are frequent or found in many of your samples.
+     .. note::
+
+       **QIIME 2 output names**
+
+       Naming of QIIME outputs in Purple Line will often contain a 4-digit
+       number corresponding to a job number on the computing system the analysis
+       was completed on. In this documentation four octothorpes (####) will be
+       used in place of the numbers.
+
+  - **####.table-trim####.qzv**: This file summarizes the dataset
+    post-trimming including the number of samples and the number of features
+    per sample. The "Interactive Sample Detail" tab contains a sampling depth
+    tool that will be used in computation of the core matrix.
+  - **####.re-seqs.gzv**: This table contains a listing of features observed in
+    the sequence data, as well as the DNA sequence that defines a feature.
+    Clicking on the DNA sequence will submit that sequence for BLAST at NCBI in
+    a separate browser tab.
+
+  The feature table contains two columms output by DADA2. DADA2 (Divisive
+  Amplicon Denoising Algorithm 2) determines what sequences are in the
+  samples. DADA2 filters the sequences and identifies probable
+  amplification or sequencing errors, filters out chimeric reads, and can
+  pair forward and reverse reads to create the best representation of the
+  sequences actually found in the samples and eliminating erroneous
+  sequences.
+
+    - **Feature ID**: A unique identifier for sequences.
+    - **Sequence**: A DNA Sequence associated with each identifier.
+
+  Clicking on any given sequence will initiate at BLAST search on the NCBI
+  website. Click "View report" on the BLAST search that opens in a new
+  web browser tab to obtain your results. Keep in mind that if your
+  sequences are short (due to read length or trimming) many BLAST searches
+  may not return significant results.
 
      .. tip::
 
-       **Choosing sampling depth**
-
-       In downstream steps, you will need to choose a sampling depth for your
-       sample comparisons. Click on the Interactive Sample Detail tab to explore
-       the number of sequences per sample after trimming. Click and drag the
-       slide bar  below "Sample Depth" to explore how many sequences can be
-       sampled during the Core Analysis (see below). As you slide the bar to the
-       right, more sequences are added, but samples that do not have this many
-       sequences will be removed during analysis. The sampling depth affects the
-       number of sequences that will be analyzed for taxonomy in later steps:
-       as the sampling depth increases, a greater representation of the
-       sequences will be analyzed. However, high sampling depth could exclude
-       important samples, so a balance between depth and retaining samples in
-       the analysis must be found.
+       Athough the term "feature" can (unfortunately) `have many meanings <https://forum.qiime2.org/t/what-is-a-feature-exactly/2201>`_
+       as used by the QIIME2 documentation, unless otherwise noted in this
+       documentation it can be though of as an OTU (`operational taxonomic unit <https://en.wikipedia.org/wiki/Operational_taxonomic_unit>`_);
+       another substitution for the word species. OTU is a convienent and common
+       terminology for refering to an unlassified or undetermined species.
+       Ultimately, we are attempting to identify an organisim from a sample of
+       DNA which may not be informative enough to reach a definitive conclusion.
 
 ----
 
@@ -435,28 +454,15 @@ each sample.
      file to examine your results. The QIIME 2 view window will also have a link
      to download a FASTA file of your sequences.
 
-     .. tip::
-
-       The feature table contains two columms output by DADA2. DADA2 (Divisive
-       Amplicon Denoising Algorithm 2) determines what sequences are in the
-       samples. DADA2 filters the sequences and identifies probable
-       amplification or sequencing errors, filters out chimeric reads, and can
-       pair forward and reverse reads to create the best representation of the
-       sequences actually found in the samples and eliminating erroneous
-       sequences.
-
-       - **Feature ID**: A unique identifier for sequences.
-       - **Sequence**: A DNA Sequence associated with each identifier.
-
-       Clicking on any given sequence will initiate at BLAST search on the NCBI
-       website. Click "View report" on the BLAST search that opens in a new
-       web browser tab to obtain your results. Keep in mind that if your
-       sequences are short (due to read length or trimming) many BLAST searches
-       may not return significant results.
-
   2. Click on 'Phylogenetic diversity' and then click the "Build phylogenetic
      diversity". This will not generate a visualization, but the data will be
      passed on to the next steps.
+
+
+      .. tip::
+
+        **Choosing sampling depth**
+
 
 ----
 
@@ -468,28 +474,38 @@ species/taxa diversity between two or more samples). Alpha diversity answers the
 question - "how many species are in a sample?"; beta diversity answer the
 question - "what are the differences in species between samples?".
 
+  .. warning::
+    **Known alpha-version bug**
+    After computing Core matrix, other diversity steps may be blocked.
+    Refesh DNA Subway in your browser to unblock these steps.
 
 **A. Calculate core matrix**
 
   1. Click on 'Core matrix' and then click the "run" link. Choose a sampling
-     depth based upon the interactive tool described in Step D, above and
-     classifier - see comments in the tip below. Finally, click 'Submit job'.
+     depth based upon the "Sampling depth" tool (described in Section D Step 1,
+     in the *table-trim####.qzv* output; *Interactive Sample Detail* tab).
+     Choose an appropriate classifer (see comments in the tip below) and
+     click :guilabel:`&Submit job`.
 
        .. tip::
 
          **Choosing Core matrix parameters**
 
          *Sampling Depth*
-         This parameter indicates how may random subsamples of counts will be
-         taken from each sample to calculate diversity. This parameter has a
-         large impact on your results so it is important to choose carefully.
-         You can choose by examining the table generated at the
-         **Demultiplex reads**
-         step. Choose a number that is at least as high as the minimum
-         Demultiplex sequence counts number (keeping in mind samples with counts
-         lower than this number will be dropped). The computational costs/time
-         goes up as sampling depth increases so keeping this number under 2000
-         is recommended. [SEVERAL GUESSES HERE]
+
+         In downstream steps, you will need to choose a sampling depth for your
+         sample comparisons. You can choose by examining the table generated at the
+         **Trim reads** step. In the *table-trim####.qzv* output,
+         *Interactive Sample Detail* tab, use the "Sampling depth" tool
+         to explore how many sequences can be sampled during the Core martix
+         computation. As you slide the bar to the right, more sequences are
+         sampled, but samples that do not have this many sequences will be
+         removed during analysis. The sampling depth affects the  number of
+         sequences that will be analyzed for taxonomy in later steps: as the
+         sampling depth increases, a greater representation of the sequences
+         will be analyzed. However, high sampling depth could
+         exclude important samples, so a balance between depth and retaining
+         samples in the analysis must be found.
 
          *Classifier*
          Choose a classifier pertaining to your experiment type. For
@@ -502,18 +518,51 @@ question - "what are the differences in species between samples?".
 
        **Sample Data**
 
-      We recomend the following parameters for the **eDNAworked** dataset:
+      We recomend the following parameters for the **montana_controls** dataset:
 
-       - **Sampling Depth**: 1000
-       - **Classifier**: Custom 12s rRNA, take 3
+       - **Sampling Depth**: 3000
+       - **Classifier**: Grenegenes (16s rRNA)
 
   2. When complete, you should generate several visualization results including:
 
-     - **.taxa-bar-plots.qzv**: An interactive stacked bar plot of species
-       diversity.
-     - **.taxononmy.gzv**: A table indicating the identified "features",  their
-       taxa, and an indication of confidence.
-     - **Other expected results**: [MORE INFO]
+     - **####.bray-curtis-emperor.qzv**: Three-dimensional PCoA
+       (principle coordinates analysis) plots
+
+       |bray|
+
+     - **####.eveness-correlation.qzva.qzv**: Measure of community eveness using
+       correlation tests
+
+       |even_cor|
+
+     - **####.eveness-group-significance.qzv**: Analysis of differences between
+       features across group
+
+       |group_sig|
+
+     - **####.faith-pd-correlation.qzv**: Faith Phylogenetic Diversity (a
+       measure of community richness) with correlation tests
+
+       |faith|
+
+     - **####.faith-pd-group-significance.qzv**: Faith Phylogenetic Diversity (
+       a measure of community richness)
+
+       |faith_group|
+
+     - **####.taxa-bar-plots.qzv**: An interactive stacked bar plot of species
+       diversity
+
+       |taxabar|
+
+     - **####.taxononmy.gzv**: A table indicating the identified "features",
+       their taxa, and an indication of confidence.
+
+       |taxonomy|
+
+     - **####.unweighted unifrac-emporor.qzv**: unweighted interactive PCoA plot
+
+       |unweighted|
 
      You can download and interact with any of the available plots.
 
@@ -526,18 +575,18 @@ question - "what are the differences in species between samples?".
 
 **B. Calculate Alpha diversity**
 
-  1. Click on the  'Alpha diversity' stop. Then click the "Build alpha diversity" link. No
-     visualization will be created.
+  1. Click on the 'Alpha diversity' stop. Then click the "Build alpha diversity"
+     link. No visualization will be created.
 
 **C. Calculate Beta diversity**
 
-  1. Click on the  'Beta diversity' stop. Then click the "Build beta diversity" link. No
-     visualization will be created.
+  1. Click on the 'Beta diversity' stop. Then click the "Build beta diversity"
+     link. No visualization will be created.
 
 **D. Calculate Taxonomic diversity**
 
-  1. Click on the  'Taxonomic diversity' stop. you should generate several visualization
-     results including:
+  1. Click on the 'Taxonomic diversity' stop and click the "Process diversity"
+     link. Results generated will include several visualizations:
 
      - **.taxa-bar-plots.qzv**: An interactive stacked bar plot of species
        diversity.
@@ -564,7 +613,7 @@ question - "what are the differences in species between samples?".
 
 *DNA Subway Purple Line - Visualize data with PiCrust and PhyloSeq*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+**Under Development**
 ----
 
 
@@ -608,3 +657,27 @@ Post your question to the user forum:
 .. |core_matrix| image:: ./img/dna_subway/core_matrix.png
    :width: 400
    :height: 500
+.. |bray| image:: ./img/dna_subway/bray.png
+   :width: 350
+   :height: 200
+.. |even_cor| image:: ./img/dna_subway/even_cor.png
+   :width: 350
+   :height: 200
+.. |group_sig| image:: ./img/dna_subway/group_sig.png
+   :width: 350
+   :height: 200
+.. |faith| image:: ./img/dna_subway/faith.png
+   :width: 350
+   :height: 200
+.. |faith_group| image:: ./img/dna_subway/faith_group.png
+   :width: 350
+   :height: 200
+.. |taxabar| image:: ./img/dna_subway/taxabar.png
+   :width: 550
+   :height: 500
+.. |taxonomy| image:: ./img/dna_subway/taxonomy.png
+   :width: 350
+   :height: 200
+.. |unweighted| image:: ./img/dna_subway/unweighted.png
+   :width: 350
+   :height: 200
