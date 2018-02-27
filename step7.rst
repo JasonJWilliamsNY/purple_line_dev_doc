@@ -6,8 +6,8 @@
 
 Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
-The Purple Line provides the capability for analysis of microbiome and eDNA (
-environmental DNA) by implementing a similified version of the
+The Purple Line provides the capability for analysis of microbiome and eDNA
+(environmental DNA) by implementing a simplified version of the
 `QIIME 2 <https://qiime2.org/>`_ (pronounced "chime two") workflow. Using the
 Purple Line, you can analyze uploaded high throughput sequencing reads to get
 details on species in microbial or environmental DNA samples.
@@ -41,9 +41,9 @@ summarized in the metadata.
   periodic disruption.
 - DNA Subway implements the `QIIME 2`_ software. This software is in continual
   development. Our version may not be the most current, and our documentation
-  and explination is not meant to replece the full
+  and explanation is not meant to replace the full
   `QIIME2 documentation <https://docs.qiime2.org/2018.2/>`_
-- We have made design decisions to create a straight-foward classroom-friendly
+- We have made design decisions to create a straightforward classroom-friendly
   workflow. While this Subway Line does not have all possible features of QIIME
   2, we believe the important concepts behind microbiome and eDNA analysis are
   embodied in the current architecture.
@@ -137,10 +137,10 @@ Sheets to edit and export your metadata files.
 
 **A. Create Metadata file**
 
-  1. Using a spreasheet editor, create a metadata sheet that provides
+  1. Using a spreadsheet editor, create a metadata sheet that provides
      descriptions of the sequencing files used in your experiment. Export this
      file as a tab-delimited **.txt** or **.tsv** file. following
-     the `QIIME 2 metadata documentation`_ recomendations.
+     the `QIIME 2 metadata documentation`_ recommendations.
 
      .. tip::
 
@@ -172,7 +172,7 @@ Sheets to edit and export your metadata files.
          Typically, microbiome/eDNA will be in the form of multiplexed FastQ
          sequences. We support the following formats:
 
-         - `Illimina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
+         - `Illumina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
      .. note::
@@ -192,7 +192,7 @@ directly to the CyVerse Data Store.
   1. Upload your
 
      - FASTQ sequence reads
-     - Sample metadata file (.tsv or .txt formatted according to `QIIME2 Metadata requirments <https://docs.qiime2.org/2018.2/tutorials/metadata/>`_ )
+     - Sample metadata file (.tsv or .txt formatted according to `QIIME2 Metadata requirements <https://docs.qiime2.org/2018.2/tutorials/metadata/>`_ )
 
      to the CyVerse Data Store using Cyberduck. See instructions:
      `CyVerse Data Store Guide <https://cyverse-data-store-guide.readthedocs-hosted.com/en/latest/step1.html>`_
@@ -205,9 +205,9 @@ directly to the CyVerse Data Store.
 
 **A. Select files using Manage Data**
 
-  1. Click on the “Manage Data” stop: this opens a Data store window that says
-     "Select your FASTQ files from the Data Store" (if you are not logged in to
-     CyVerse, it will ask you to do so); click the **add data** link.
+  1. Click on the “Manage Data” stop: this opens a Data store window prompting
+     you to "Select your FASTQ files from the Data Store" (if you are not logged
+     in to CyVerse, it will ask you to do so); click the **add data** link.
   2. Select your metadata file: click on the folder that matches your CyVerse
      username and Navigate to the folder where your sequencing files are located.
      click :guilabel:`&Add selected files` to add your metadata file.
@@ -250,13 +250,13 @@ directly to the CyVerse Data Store.
 
   .. warning::
     **Known alpha-version bug**
-    After adding data, the next stop (Demultiple reads) will still be blocked.
-    Refesh DNA Subway in your browser to unblock this step.
+    After adding data, the next stop (Demultiplex reads) will still be blocked.
+    Refresh DNA Subway in your browser to unblock this step.
 
 **B. Demultiplex reads**
 
 At this step, reads will be grouped according to the sample metadata.
-This includes separating reads acording to their index sequences if this
+This includes separating reads according to their index sequences if this
 was not done prior to running the Purple Line. For demultiplexing based on index
 sequences, the index sequences must be defined in the metadata file.
 
@@ -324,8 +324,8 @@ sequence quality histogram which can be used to determine parameter for trimming
         This is an interactive plot that gives you an average quality
         `Phred score <https://en.wikipedia.org/wiki/Phred_quality_score>`_
         (y-axis) by the position along the read (x-axis). This box plot is
-        derrived from an random sampling of a subset of sequences. The number of
-        sequences sampled will be inidicated in the plot caption.
+        derived from a random sampling of a subset of sequences. The number of
+        sequences sampled will be indicated in the plot caption.
 
   2. Click the "Interactive Quality Plot" tab to view a histogram of sequence
      quality. Use this plot at the tip below to determine a location to trim.
@@ -345,7 +345,7 @@ sequence quality histogram which can be used to determine parameter for trimming
       wish to examine. Clicking on a given histogram bar will also generate a
       text report and metrics in the table below the chart. Using these metrics,
       you can choose a position to trim on the right side (e.g. 3' end of the
-      sequence read). The 5' (left trim) is sepecific to your choice of primers
+      sequence read). The 5' (left trim) is specific to your choice of primers
       and sequencing adaptors (e.g. the sum of the adaptor sequence you expect
       to be attached to the 5' end of the read). Poor quality metrics will
       generate a table colored in red, and those base positions will also be
@@ -373,7 +373,7 @@ sequence quality histogram which can be used to determine parameter for trimming
 
   3. Click on the 'Trim reads' stop. Click :guilabel:`&run` and then select
      values for "trimLeft" (the position starting from the left you wish to
-     ) and "TruncLen" (This is the position where reads should be trimmed,
+     trim) and "TruncLen" (this is the position where reads should be trimmed,
      truncating the 3' end of the read. Reads shorter than this length will
      be discarded). Finally, click the "trim reads" link.
 
@@ -413,7 +413,7 @@ Once trimming is complete, the following outputs are expected:
     Clicking on the DNA sequence will submit that sequence for BLAST at NCBI in
     a separate browser tab.
 
-  The feature table contains two columms output by DADA2. DADA2 (Divisive
+  The feature table contains two columns output by DADA2. DADA2 (Divisive
   Amplicon Denoising Algorithm 2) determines what sequences are in the
   samples. DADA2 filters the sequences and identifies probable
   amplification or sequencing errors, filters out chimeric reads, and can
@@ -432,12 +432,12 @@ Once trimming is complete, the following outputs are expected:
 
      .. tip::
 
-       Athough the term "feature" can (unfortunately) `have many meanings <https://forum.qiime2.org/t/what-is-a-feature-exactly/2201>`_
+       Although the term "feature" can (unfortunately) `have many meanings <https://forum.qiime2.org/t/what-is-a-feature-exactly/2201>`_
        as used by the QIIME2 documentation, unless otherwise noted in this
-       documentation it can be though of as an OTU (`operational taxonomic unit <https://en.wikipedia.org/wiki/Operational_taxonomic_unit>`_);
-       another substitution for the word species. OTU is a convienent and common
-       terminology for refering to an unlassified or undetermined species.
-       Ultimately, we are attempting to identify an organisim from a sample of
+       documentation it can be thought of as an OTU (`operational taxonomic unit <https://en.wikipedia.org/wiki/Operational_taxonomic_unit>`_);
+       another substitution for the word species. OTU is a convenient and common
+       terminology for referring to an unclassified or undetermined species.
+       Ultimately, we are attempting to identify an organism from a sample of
        DNA which may not be informative enough to reach a definitive conclusion.
 
 ----
@@ -446,7 +446,7 @@ Once trimming is complete, the following outputs are expected:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 At this step, you can visualize summaries of the data. A feature table will
-generate summary statistics, including how many sequencies are associated with
+generate summary statistics, including how many sequences are associated with
 each sample.
 
   1. Click 'Feature table' and then the "Build feature table" link. When
@@ -477,14 +477,14 @@ question - "what are the differences in species between samples?".
   .. warning::
     **Known alpha-version bug**
     After computing Core matrix, other diversity steps may be blocked.
-    Refesh DNA Subway in your browser to unblock these steps.
+    Refresh DNA Subway in your browser to unblock these steps.
 
 **A. Calculate core matrix**
 
   1. Click on 'Core matrix' and then click the "run" link. Choose a sampling
      depth based upon the "Sampling depth" tool (described in Section D Step 1,
      in the *table-trim####.qzv* output; *Interactive Sample Detail* tab).
-     Choose an appropriate classifer (see comments in the tip below) and
+     Choose an appropriate classifier (see comments in the tip below) and
      click :guilabel:`&Submit job`.
 
        .. tip::
@@ -497,7 +497,7 @@ question - "what are the differences in species between samples?".
          sample comparisons. You can choose by examining the table generated at the
          **Trim reads** step. In the *table-trim####.qzv* output,
          *Interactive Sample Detail* tab, use the "Sampling depth" tool
-         to explore how many sequences can be sampled during the Core martix
+         to explore how many sequences can be sampled during the Core matrix
          computation. As you slide the bar to the right, more sequences are
          sampled, but samples that do not have this many sequences will be
          removed during analysis. The sampling depth affects the  number of
@@ -510,7 +510,7 @@ question - "what are the differences in species between samples?".
          *Classifier*
          Choose a classifier pertaining to your experiment type. For
          **Microbiome** choose **Grenegenes (16s rRNA)** classifier. For an
-         **eDNA** experiment chosse **Custom 12s rRNA, take 3** or if you are
+         **eDNA** experiment chose **Custom 12s rRNA, take 3** or if you are
          specifically looking for marine fishes you may elect to choose the
          **Mitofish JO** classifier.
 
@@ -518,7 +518,7 @@ question - "what are the differences in species between samples?".
 
        **Sample Data**
 
-      We recomend the following parameters for the **montana_controls** dataset:
+      We recommend the following parameters for the **montana_controls** dataset:
 
        - **Sampling Depth**: 3000
        - **Classifier**: Grenegenes (16s rRNA)
@@ -530,7 +530,7 @@ question - "what are the differences in species between samples?".
 
        |bray|
 
-     - **####.eveness-correlation.qzva.qzv**: Measure of community eveness using
+     - **####.eveness-correlation.qzva.qzv**: Measure of community evenness using
        correlation tests
 
        |even_cor|
@@ -569,7 +569,7 @@ question - "what are the differences in species between samples?".
      .. tip::
 
        Selecting different taxonomic levels allows you to visualize diversity
-       for each sample at diffrent levels (e.g. Kindom, Phylym, Class, etc.)
+       for each sample at different levels (e.g. Kindom, Phylym, Class, etc.)
 
        |core_matrix|
 
@@ -597,14 +597,14 @@ question - "what are the differences in species between samples?".
 **E. Calculate differential abundance**
 
   1. Click on the 'Differential abundance' stop. Then click on the "Submit
-     new "Differential abundance" job" link. Choose a metadata catagory to group
+     new "Differential abundance" job" link. Choose a metadata category to group
      by, and a level of taxonomy to summarize by. Then click :guilabel:`&submit job`.
 
      .. note::
 
        **Sample Data**
 
-      We recomend the following parameters for the **eDNAworked** dataset:
+      We recommend the following parameters for the **eDNAworked** dataset:
 
        - **Group data by**: Treatment
        - **Level of taxonomy to summarize**: 3
