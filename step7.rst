@@ -28,7 +28,7 @@ summarized in the metadata.
 
 .. admonition:: Sample data
 
-   test of sample data 2
+   test of sample data 2ee
 
 **Some things to remember about the platform**
 
