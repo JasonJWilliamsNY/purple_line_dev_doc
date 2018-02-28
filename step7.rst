@@ -7,12 +7,12 @@ Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
 
 .. warning::
-  
-**Known alpha-version bug**
-Purple line is in alpha release. There are several known issues. One common
-issue is that after completing a step, a subsequent set may be blocked.
-To solve, refresh DNA Subway in your browser to unblock this step. Please send
-feeback to `DNALC Admin <mailto:admin@dnalc.org>`_
+
+  **Known alpha-version bugs:**
+  Purple line is in alpha release. There are several known issues. One common
+  issue is that after completing a step, a subsequent set may be blocked.
+  To solve, refresh DNA Subway in your browser to unblock this step. Please send
+  feeback to `DNALC Admin <mailto:dnalcadmin@cshl.edu >`_
 
 
 
@@ -279,8 +279,8 @@ sequences, the index sequences must be defined in the metadata file.
     .. note::
 
       Even if your files were previously demultimplexed (as will generally be
-      the case with illumina data) you must still complete this step to have your
-      files appropriately associated with metadata.
+      the case with Illumina data) you must still complete this step to have
+      your sequence read files appropriately associated with metadata.
 
 
   1. Click the 'Demultiplex reads' stop, then click :guilabel:`&demux reads` to
@@ -610,8 +610,8 @@ question - "what are the differences in species between samples?".
 
       We recommend the following parameters for the **montana_controls** dataset:
 
-       - **Group data by**: Treatment
-       - **Level of taxonomy to summarize**: 3
+       - **Group data by**: CollectionMethod
+       - **Level of taxonomy to summarize**: 5
 
 ----
 
