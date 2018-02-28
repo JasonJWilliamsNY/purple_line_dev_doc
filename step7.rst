@@ -26,13 +26,9 @@ identification and quantitation. Once sequences are analyzed, the results can be
 visualized to allow comparisons between samples and different conditions
 summarized in the metadata.
 
-.. admonition::
-
-   test of anything
-
 .. admonition:: Sample data
 
-   test of sample data
+   test of sample data 2
 
 **Some things to remember about the platform**
 

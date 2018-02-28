@@ -8,11 +8,11 @@
 
 div.admonition-sample-data.admonition {
     padding: 3em;
-    color:#d66706;
+    color:##ffce84;
     font-weight:bold;
     display:block;
-    color:#fff;
-    background:#d66706;
+    color:##000000;
+    background:##ffce84;
     margin:-12px;
     padding:6px 12px;
     margin-bottom:12px}
