@@ -3,7 +3,6 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-
 Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
 The Purple Line provides the capability for analysis of microbiome and eDNA
@@ -26,9 +25,6 @@ identification and quantitation. Once sequences are analyzed, the results can be
 visualized to allow comparisons between samples and different conditions
 summarized in the metadata.
 
-.. admonition:: Sample data
-
-   test of sample data 2ee
 
 **Some things to remember about the platform**
 
@@ -53,15 +49,15 @@ summarized in the metadata.
 
 ----
 
-     .. note::
+     .. admonition:: Sample data
 
        **Sample Data**
 
       In this guide, we will use a microbiome dataset collected from
       `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ [MORE INFO]
 
-       Where appropriate, a note in the instructions will indicate which options
-       to select so that you can work with this test data.
+      Where appropriate, a note in the instructions will indicate which options
+      to select so that you can work with this test data.
 
 
 *DNA Subway Purple Line - Metadata file and Sequencing Prerequisites*
@@ -161,9 +157,7 @@ Sheets to edit and export your metadata files.
   2. For 'Select Project Type' select either Single End Reads or Paired End
      Reads
 
-     .. note::
-
-       **Sample Data**
+     .. admonition:: Sample data
 
         For sample data in this guide select **Single End Reads**
 
@@ -177,9 +171,7 @@ Sheets to edit and export your metadata files.
          - `Illumina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
-     .. note::
-
-       **Sample Data**
+    .. admonition:: Sample data
 
         For sample data in this guide select **Illumina Casava 1.8**
 
@@ -214,9 +206,7 @@ directly to the CyVerse Data Store.
      username and Navigate to the folder where your sequencing files are located.
      click :guilabel:`&Add selected files` to add your metadata file.
 
-     .. note::
-
-       **Sample Data**
+    .. admonition:: Sample data
 
         For sample metadata file in this guide select navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
@@ -232,9 +222,7 @@ directly to the CyVerse Data Store.
      matches your CyVerse username and Navigate to the folder where your
      sequencing files are located.
 
-     .. note::
-
-       **Sample Data**
+    .. admonition:: Sample data
 
         For sample sequence date in this guide select navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
@@ -379,9 +367,7 @@ sequence quality histogram which can be used to determine parameter for trimming
      truncating the 3' end of the read. Reads shorter than this length will
      be discarded). Finally, click the "trim reads" link.
 
-     .. note::
-
-       **Sample Data**
+    .. admonition:: Sample data
 
         Based on the histogram for our sample, we recommend the following
         parameters:
@@ -516,9 +502,7 @@ question - "what are the differences in species between samples?".
          specifically looking for marine fishes you may elect to choose the
          **Mitofish JO** classifier.
 
-     .. note::
-
-       **Sample Data**
+    .. admonition:: Sample data
 
       We recommend the following parameters for the **montana_controls** dataset:
 
@@ -602,11 +586,9 @@ question - "what are the differences in species between samples?".
      new "Differential abundance" job" link. Choose a metadata category to group
      by, and a level of taxonomy to summarize by. Then click :guilabel:`&submit job`.
 
-     .. note::
+    .. admonition:: Sample data
 
-       **Sample Data**
-
-      We recommend the following parameters for the **eDNAworked** dataset:
+      We recommend the following parameters for the **montana_controls** dataset:
 
        - **Group data by**: Treatment
        - **Level of taxonomy to summarize**: 3
@@ -614,8 +596,10 @@ question - "what are the differences in species between samples?".
 ----
 
 *DNA Subway Purple Line - Visualize data with PiCrust and PhyloSeq*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 **Under Development**
+
 ----
 
 
