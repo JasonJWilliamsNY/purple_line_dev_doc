@@ -7,6 +7,7 @@ Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
 
 .. warning::
+  
 **Known alpha-version bug**
 Purple line is in alpha release. There are several known issues. One common
 issue is that after completing a step, a subsequent set may be blocked.
