@@ -5,22 +5,32 @@
 
 Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 ---------------------------------------------------------------------
+
+.. warning::
+**Known alpha-version bug**
+Purple line is in alpha release. There are several known issues. One common
+issue is that after completing a step, a subsequent set may be blocked.
+To solve, refresh DNA Subway in your browser to unblock this step. Please send
+feeback to `DNALC Admin <mailto:admin@dnalc.org>`_
+
+
+
 The Purple Line provides the capability for analysis of microbiome and eDNA
 (environmental DNA) by implementing a simplified version of the
 `QIIME 2 <https://qiime2.org/>`_ (pronounced "chime two") workflow. Using the
-Purple Line, you can analyze uploaded high throughput sequencing reads to get
-details on species in microbial or environmental DNA samples.
+Purple Line, you can analyze uploaded high throughput sequencing reads to
+identify species in microbial or environmental DNA samples.
 
-Metabarcoding uses next generation sequencing to analyze hundreds of thousands
+Metabarcoding uses high-throughput sequencing to analyze hundreds of thousands
 of DNA barcodes from complex mixtures of DNA. In a typical experiment, DNA is
 isolated from sterile swabs or material taken from different environmental
 locations or conditions. PCR is used to amplify a variable region, such as COI,
-or 12S or 16S ribosomal RNA genes, and NGS reads identify the variety and
+or 12S or 16S ribosomal RNA genes, and sequence reads identify the variety and
 abundance of species from different samples. The analysis requires specialized
 software, such as QIIME 2.
 
-The Purple Line manages data input from Cyverse's Discovery Environment,
-metadata upload, demultiplexing of samples, quality control, and taxonomic
+The Purple Line integrates sequence data and metadata imported from Cyverse's
+Data Store, demultiplexing of samples, quality control, and taxonomic
 identification and quantitation. Once sequences are analyzed, the results can be
 visualized to allow comparisons between samples and different conditions
 summarized in the metadata.
@@ -28,8 +38,8 @@ summarized in the metadata.
 
 **Some things to remember about the platform**
 
-- You must be a registered user to use Purple Line. (register for a CyVerse
-  account at `user.cyverse.org <https://user.cyverse.org/>`_)
+- You must be a registered CyVerse user to use Purple Line (register for a
+  CyVerse account at `user.cyverse.org <https://user.cyverse.org/>`_)
 - The Purple line was designed to make microbiome/eDNA data analysis "simple".
   However, we ask that users very carefully and thoughtfully decide what "jobs"
   they want to submit.
@@ -43,20 +53,20 @@ summarized in the metadata.
   `QIIME2 documentation <https://docs.qiime2.org/2018.2/>`_
 - We have made design decisions to create a straightforward classroom-friendly
   workflow. While this Subway Line does not have all possible features of QIIME
-  2, we believe the important concepts behind microbiome and eDNA analysis are
-  embodied in the current architecture.
+  2, we purpose to cover important concepts behind microbiome and eDNA analysis.
 
 
 ----
 
      .. admonition:: Sample data
 
-       **Sample Data**
+       **How to use provided sample data**
       In this guide, we will use a microbiome dataset (*"montana_controls"*)
-      collected from
-      `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ [MORE INFO]
-      Where appropriate, a note (in this orange color backgroud) in the
-      instructions will indicate which options to select.
+      collected from various water sources in
+      `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ . [MORE INFO]
+      Where appropriate, a note (in this orange colored backgroud) in the
+      instructions will indicate which options to select to make use of this
+      provided dataset.
 
 
 *DNA Subway Purple Line - Metadata file and Sequencing Prerequisites*
@@ -70,9 +80,13 @@ supported by many types of software, such as editing, importing, and exporting
 from spreadsheet programs and databases. Thus, it's usually straightforward to
 manipulate QIIME 2 metadata using the software of your choosing. If in doubt,
 we recommend using a spreadsheet program such as Microsoft Excel or Google
-Sheets to edit and export your metadata files.
+Sheets to edit and export your metadata files. You can download and examine a
+sample metadata (from the *"montana_controls"* dataset on the
+`CyVerse Data Commons <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls/mappingfile_MT_corrected.tsv>`_
 
 .. tip::
+
+  Here are a few reminders for formatting your metadata.
 
   **Leading and trailing whitespace characters**
 
@@ -93,8 +107,8 @@ Sheets to edit and export your metadata files.
 
   **Sample IDs**
 
-  For the sample IDs, there are some simple rules so that QIIME 2 does not
-  flag an error:
+  For the sample IDs, there are some simple rules to comply with QIIME 2
+  requirments:
 
       - IDs may consist of any Unicode characters, with the exception that IDs
         must not start with the pound sign (#), as those rows would be
@@ -145,7 +159,7 @@ Sheets to edit and export your metadata files.
      .. tip::
 
         See an example metadata file used for our sample data here:
-        `Sample mapping file <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/eDNAworked/mappingfile.tsv>`_
+        `Sample metadata file <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/eDNAworked/mappingfile.tsv>`_
 
 
 *DNA Subway Purple Line - Create a Microbiome Analysis Project*
@@ -153,10 +167,18 @@ Sheets to edit and export your metadata files.
 
 **A. Create a project in Subway**
 
-  1. Log-in to `DNA Subway <https://dnasubway.cyverse.org/>`_ - unregistered
-     users may NOT use Purple Line. (register for a CyVerse account at `user.cyverse.org`_)
+  1. Log-in to `DNA Subway <https://dnasubway.cyverse.org/>`_ (unregistered
+     users may NOT use Purple Line, register for a CyVerse account at `user.cyverse.org`_)
 
-  2. For 'Select Project Type' select either Single End Reads or Paired End
+  2. Click the purple square ("Microbiome Analysis") to begin a project.
+
+    .. tip::
+
+       Purple line can be used to analyze eDNA (Envrionmental DNA). The workflow
+       is largely the same, with eDNA typically using a 12S RNA database of
+       sequences for identification.
+
+  3. For 'Select Project Type' select either Single End Reads or Paired End
      Reads
 
 
@@ -165,7 +187,7 @@ Sheets to edit and export your metadata files.
         *"montana_controls"* dataset: select **Single End Reads**
 
 
-  3. For 'Select File  Format' select the format the corresponds to your sequence metadata.
+  4. For 'Select File  Format' select the format the corresponds to your sequence metadata.
 
     .. admonition:: Sample data
 
@@ -178,13 +200,13 @@ Sheets to edit and export your metadata files.
          - `Illumina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
-  4. Enter a project title, and description; click :guilabel:`&Continue`.
+  5. Enter a project title, and description; click :guilabel:`&Continue`.
 
 **B. Upload read data to CyVerse Data Store**
 
 The sequence read files used in these experiments are too large to upload using
-the Subway internet interface. You must upload your files (either .fastq or .fastq.gz)
-directly to the CyVerse Data Store.
+the Subway interface. You must upload your files (either .fastq or .fastq.gz)
+directly to the CyVerse Data Store:
 
   1. Upload your
 
@@ -202,10 +224,10 @@ directly to the CyVerse Data Store.
 
 **A. Select files using Manage Data**
 
-  1. Click on the “Manage Data” stop: this opens a Data store window prompting
+  1. Click on the “Manage Data” stop: this opens a window prompting
      you to "Select your FASTQ files from the Data Store" (if you are not logged
      in to CyVerse, it will ask you to do so); click the **add data** link.
-  2. Select your metadata file: click on the folder that matches your CyVerse
+  2. Select your metadata file; click on the folder that matches your CyVerse
      username and Navigate to the folder where your sequencing files are located.
      Click :guilabel:`&Add selected files` to add your metadata file.
 
