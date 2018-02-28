@@ -158,7 +158,7 @@ Sheets to edit and export your metadata files.
 
      .. admonition:: Sample data
 
-        For sample data in this guide select **Single End Reads**
+        "montana_controls" dataset: select **Single End Reads**
 
 
   3. For 'Select File  Format' select the format the corresponds to your sequence metadata.
@@ -170,9 +170,11 @@ Sheets to edit and export your metadata files.
          - `Illumina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
+
     .. admonition:: Sample data
 
-        For sample data in this guide select **Illumina Casava 1.8**
+        "montana_controls" dataset: select **Illumina Casava 1.8**
+
 
   4. Enter a project title, and description; click :guilabel:`&Continue`.
 
