@@ -52,12 +52,10 @@ summarized in the metadata.
      .. admonition:: Sample data
 
        **Sample Data**
-
       In this guide, we will use a microbiome dataset collected from
       `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ [MORE INFO]
-
-      Where appropriate, a note in the instructions will indicate which options
-      to select so that you can work with this test data.
+      Where appropriate, a note (in this orange color backgroud) in the
+      instructions will indicate which options to select.
 
 
 *DNA Subway Purple Line - Metadata file and Sequencing Prerequisites*
@@ -156,6 +154,7 @@ Sheets to edit and export your metadata files.
 
   2. For 'Select Project Type' select either Single End Reads or Paired End
      Reads
+
 
      .. admonition:: Sample data
 
