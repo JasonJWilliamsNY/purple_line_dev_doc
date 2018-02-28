@@ -52,7 +52,8 @@ summarized in the metadata.
      .. admonition:: Sample data
 
        **Sample Data**
-      In this guide, we will use a microbiome dataset collected from
+      In this guide, we will use a microbiome dataset (*"montana_controls"*)
+      collected from
       `Montana <http://datacommons.cyverse.org/browse/iplant/home/shared/cyverse_training/platform_guides/dna_subway/purple_line/montana_controls>`_ [MORE INFO]
       Where appropriate, a note (in this orange color backgroud) in the
       instructions will indicate which options to select.
@@ -74,23 +75,26 @@ Sheets to edit and export your metadata files.
 .. tip::
 
   **Leading and trailing whitespace characters**
-    If any cell in the metadata contains leading or trailing whitespace
-    characters (e.g. spaces, tabs), those characters will be ignored when the
-    file is loaded. Thus, leading and trailing whitespace characters are not
-    significant, so cells containing the values 'gut' and '  gut  ' are
-    equivalent. This rule is applied before any other rules described below
+
+  If any cell in the metadata contains leading or trailing whitespace
+  characters (e.g. spaces, tabs), those characters will be ignored when the
+  file is loaded. Thus, leading and trailing whitespace characters are not
+  significant, so cells containing the values 'gut' and '  gut  ' are
+  equivalent. This rule is applied before any other rules described below
 
   **ID column**
-      The first column MUST be the ID column name (i.e. ID header) and the
-      first line of this column should be #SampleID or one of a few alternative.
+
+  The first column MUST be the ID column name (i.e. ID header) and the
+  first line of this column should be #SampleID or one of a few alternative.
 
       - Case-insensitive: id; sampleid; sample id; sample-id; featureid;
         feature id; feature-id.
       - Case-sensitive: #SampleID; #Sample ID; #OTUID; #OTU ID; sample_name
 
   **Sample IDs**
-      For the sample IDs, there are some simple rules so that QIIME 2 does not
-      get confused:
+
+  For the sample IDs, there are some simple rules so that QIIME 2 does not
+  flag an error:
 
       - IDs may consist of any Unicode characters, with the exception that IDs
         must not start with the pound sign (#), as those rows would be
@@ -121,15 +125,15 @@ Sheets to edit and export your metadata files.
       - Empty cells represent missing data. Note that cells consisting solely of
         whitespace characters are also interpreted as missing data.
 
-      QIIME 2 currently supports categorical and numeric metadata columns. By
-      default, QIIME 2 will attempt to infer the type of each metadata column:
-      if the column consists only of numbers or missing data, the column is
-      inferred to be numeric. Otherwise, if the column contains any non-numeric
-      values, the column is inferred to be categorical. Missing data (i.e. empty
-      cells) are supported in categorical columns as well as numeric columns.
-      For more details, and for how to define the nature of the data when needed,
-      see the
-      `QIIME 2 metadata documentation <https://docs.qiime2.org/2018.2/tutorials/metadata/>`_
+  QIIME 2 currently supports categorical and numeric metadata columns. By
+  default, QIIME 2 will attempt to infer the type of each metadata column:
+  if the column consists only of numbers or missing data, the column is
+  inferred to be numeric. Otherwise, if the column contains any non-numeric
+  values, the column is inferred to be categorical. Missing data (i.e. empty
+  cells) are supported in categorical columns as well as numeric columns.
+  For more details, and for how to define the nature of the data when needed,
+  see the
+  `QIIME 2 metadata documentation <https://docs.qiime2.org/2018.2/tutorials/metadata/>`_
 
 **A. Create Metadata file**
 
@@ -158,27 +162,25 @@ Sheets to edit and export your metadata files.
 
      .. admonition:: Sample data
 
-        "montana_controls" dataset: select **Single End Reads**
+        *"montana_controls"* dataset: select **Single End Reads**
 
 
   3. For 'Select File  Format' select the format the corresponds to your sequence metadata.
 
-     .. tip::
+    .. admonition:: Sample data
+
+        *"montana_controls"* dataset: select **Illumina Casava 1.8**
+
+    .. tip::
          Typically, microbiome/eDNA will be in the form of multiplexed FastQ
          sequences. We support the following formats:
 
          - `Illumina Casava 1.8 <https://support.illumina.com/content/dam/illumina-support/documents/myillumina/33d66b02-53b5-4f4d-9d8b-f94237c7e44d/casava_qrg_15011197b.pdf>`_
          - `Earth Microbiome Project <http://www.earthmicrobiome.org/protocols-and-standards/>`_
 
-
-    .. admonition:: Sample data
-
-        "montana_controls" dataset: select **Illumina Casava 1.8**
-
-
   4. Enter a project title, and description; click :guilabel:`&Continue`.
 
-**B. Upload Read Data to CyVerse Data Store**
+**B. Upload read data to CyVerse Data Store**
 
 The sequence read files used in these experiments are too large to upload using
 the Subway internet interface. You must upload your files (either .fastq or .fastq.gz)
@@ -205,7 +207,7 @@ directly to the CyVerse Data Store.
      in to CyVerse, it will ask you to do so); click the **add data** link.
   2. Select your metadata file: click on the folder that matches your CyVerse
      username and Navigate to the folder where your sequencing files are located.
-     click :guilabel:`&Add selected files` to add your metadata file.
+     Click :guilabel:`&Add selected files` to add your metadata file.
 
     .. admonition:: Sample data
 
@@ -217,15 +219,15 @@ directly to the CyVerse Data Store.
         :guilabel:`&Add selected files`.
 
   3. To validate the metadata file, click "validate sample mapping file", header
-     columns will be displayed. Next click :guilabel:`&Validate`.
+     columns will be displayed. Next, click :guilabel:`&Validate`.
 
   4. To add sequence data, click the "add data" link. Click on the folder that
-     matches your CyVerse username and Navigate to the folder where your
+     matches your CyVerse username and navigate to the folder where your
      sequencing files are located.
 
     .. admonition:: Sample data
 
-        For sample sequence date in this guide select navigate to:
+        For *"montana_controls"* dataset navigate to:
         Shared Data > cyverse_training > platform_guides > dna_subway >
         purple_line > montana_controls
 
@@ -251,11 +253,11 @@ This includes separating reads according to their index sequences if this
 was not done prior to running the Purple Line. For demultiplexing based on index
 sequences, the index sequences must be defined in the metadata file.
 
-  ..note :
+    .. note::
 
-    Even if your files were previously demultimplexed (as will generally be
-    the case with illumina data) you must still complete this step to have your
-    files appropriately associated with metadata.
+      Even if your files were previously demultimplexed (as will generally be
+      the case with illumina data) you must still complete this step to have your
+      files appropriately associated with metadata.
 
 
   1. Click the 'Demultiplex reads' stop, then click :guilabel:`&demux reads` to
@@ -300,15 +302,15 @@ sequence quality histogram which can be used to determine parameter for trimming
 
         **Overview Tab**
 
-       - *Demultiplexed sequence counts summary*: For each of the fastq files
-         (each of which may generally correspond to a single sample), you are
-         presented with comparative statistics on the number of sequences
-         present. This is followed by a histogram that plots number of sequences
-         by the number of samples.
+         - *Demultiplexed sequence counts summary*: For each of the fastq files
+           (each of which may generally correspond to a single sample), you are
+           presented with comparative statistics on the number of sequences
+           present. This is followed by a histogram that plots number of sequences
+           by the number of samples.
 
-       - *Per-sample sequence counts*: These are the actual counts of sequences
-         per sample as indicated by the sample names you provided in your
-         metadata sheet.
+         - *Per-sample sequence counts*: These are the actual counts of sequences
+           per sample as indicated by the sample names you provided in your
+           metadata sheet.
 
         **Interactive Quality Plot**
 
@@ -446,12 +448,6 @@ each sample.
   2. Click on 'Phylogenetic diversity' and then click the "Build phylogenetic
      diversity". This will not generate a visualization, but the data will be
      passed on to the next steps.
-
-
-      .. tip::
-
-        **Choosing sampling depth**
-
 
 ----
 
