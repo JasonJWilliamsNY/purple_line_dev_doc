@@ -10,7 +10,7 @@ Walkthrough of DNA Subway Purple Line (alpha testing documentation)
 
   **Known alpha-version bugs:**
   Purple line is in alpha release. There are several known issues. One common
-  issue is that after completing a step, a subsequent set may be blocked.
+  issue is that after completing a step, a subsequent step may be blocked.
   To solve, refresh DNA Subway in your browser to unblock this step. Please send
   feeback to `DNALC Admin <mailto:dnalcadmin@cshl.edu>`_
 
